@@ -1,3 +1,6 @@
+///////// FUNCTIONS /////////
+
+
 const laodCurrencies = () => {
     const from = document.getElementById("from")
     const to = document.getElementById("to")

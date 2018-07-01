@@ -6,6 +6,7 @@
     <title>converter</title>
     <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
+    <script src="./idb.js"></script>
 </head>
 
 <body onload="laodCurrencies()">
@@ -56,7 +57,21 @@
                     console.log("service worker failed to register", err)
                 })
         }
+
+        var dbPromise = idb.open('currency-converter-db', 1, function(upgradeDb) {
+            var keyValStore = upgradeDb.createObjectStore('keyval');
+            keyValStore.put('world', 'hello');
+        });
+
+        dbPromise.then(function(db) {
+            var tx = db.transaction('keyval');
+            var keyValStore = tx.objectStore('keyval');
+            return keyValStore.get('hello');
+        }).then(function(val) {
+            console.log('the value of "hello" is:', val);
+        });
     </script>
+
     <script src="./script.js"></script>
     <script src="./jquery.min.js"></script>
     <script src="./bootstrap.min.js"></script>

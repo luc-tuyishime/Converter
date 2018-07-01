@@ -1,0 +1,17 @@
+.header-title {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.header-title h1 {
+  text-align: center;
+}
+
+.result {
+  padding-top: 40px;
+}
+
+.results {
+  color: red;
+  font-weight: bold;
+}

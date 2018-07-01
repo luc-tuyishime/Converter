@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>converter</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body onload="laodCurrencies()">
+    <div class="container">
+        <div class="">
+            <div class="row header-title text-center">
+                <h1>Currency Converter</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <h3>Amount:</h3>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" oninput="ConvertCurrency()" class="form-control" id="amount" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <h3>From:</h3>
+                </div>
+                <div class="col-md-3"><select class="form-control" placeholder="select" onchange="ConvertCurrency()" id="from"></select></div>
+                <div class="col-md-2">
+                    <h3>to:</h3>
+                </div>
+                <div class="col-md-3"><select class="form-control" placeholder="select" onchange="ConvertCurrency()" id="to"></select></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center result">
+                    <h3>Result = <span class="results" id="result"></span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("./sw.js", {
+                    scope: "./"
+                })
+                .then(function(registration) {
+                    console.log("service worker registered")
+                })
+                .catch(function(err) {
+                    console.log("service worker failed to register", err)
+                })
+        }
+    </script>
+    <script src="./script.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+</body>
+
+</html>
